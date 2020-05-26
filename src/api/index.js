@@ -1,12 +1,11 @@
 const APIKEY = '16713911-3f0e204e49fb82f31f0481257';
 const url = 'https://pixabay.com/api/';
-const itemsPerPage = 20;
-const generalConfig = `key=${APIKEY}&pretty=true&per_page=${itemsPerPage}&editors_choice=true`;
+const generalConfig = `key=${APIKEY}&pretty=true&editors_choice=true`;
 
-export const getPhotos = async (page = 1) => {
+export const getPhotos = async (page = 1, itemsPerPage = 20) => {
   try {
     const photosApi = await fetch(
-      `${url}?${generalConfig}&image_type=photo&page=${page}`,
+      `${url}?${generalConfig}&image_type=photo&page=${page}&per_page=${itemsPerPage}`,
     );
     let photos = await photosApi.json();
     return photos.hits;
@@ -15,10 +14,10 @@ export const getPhotos = async (page = 1) => {
   }
 };
 
-export const getVideos = async (page = 1) => {
+export const getVideos = async (page = 1, itemsPerPage = 20) => {
   try {
     const videosApi = await fetch(
-      `${url}/videos/?${generalConfig}&page=${page}`,
+      `${url}/videos/?${generalConfig}&page=${page}&per_page=${itemsPerPage}`,
     );
     let videos = await videosApi.json();
     return videos.hits;
@@ -39,4 +38,16 @@ export const getFakeDataFeed = async (page = 1) => {
     media.push(data);
   }
   return media;
+};
+
+export const getFakeDataStories = async (page = 1) => {
+  const photos = await getPhotos(page);
+  const stories = photos.map(({id, webformatURL, userImageURL, user}) => ({
+    id,
+    image: webformatURL,
+    user: user,
+    avatar: userImageURL,
+    time: Math.floor(Math.random() * 23) + 1,
+  }));
+  return stories;
 };

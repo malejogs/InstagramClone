@@ -31,7 +31,7 @@ const UserName = styled.Text`
   margin: 0 10px;
 `;
 
-const Publication = ({media = [], idElemShow = ''}) => {
+const Publication = ({media = [], idElemShow = '', screen}) => {
   const {id = 0, user, tags, userImageURL, comments, likes} = media[0];
   return (
     <View>
@@ -47,7 +47,7 @@ const Publication = ({media = [], idElemShow = ''}) => {
         </User>
         <Icon name="more-horizontal" size={20} color="#1c1c1c" />
       </Header>
-      <Media item={media} isShow={idElemShow === id} />
+      <Media item={media} isShow={idElemShow === id} screen={screen} />
       <Actions />
       <Info info={{user, tags, likes}} />
       <Comment comments={comments} />
