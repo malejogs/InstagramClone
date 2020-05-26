@@ -27,7 +27,6 @@ const image =
 const Media = ({item = {}, isShow = false, screen}) => {
   const route = useRoute();
   const [indexCarousel, setIndexCarousel] = useState(0);
-  console.log(route.name);
   return (
     <Carousel
       loop={false}

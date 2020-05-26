@@ -76,7 +76,6 @@ const Feed = ({navigation, route}) => {
   useEffect(() => {
     getMediaPerPage(page);
   }, [page]);
-  console.log(route);
 
   useEffect(() => {
     getFakeDataStories(20).then(storiesData => {
