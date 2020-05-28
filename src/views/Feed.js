@@ -148,7 +148,7 @@ const Feed = ({navigation, route}) => {
           setNewMedia(data);
           setIsRefreshing(false);
         }}
-        keyExtractor={item => `${item[0]?.id}-${page}`}
+        keyExtractor={item => item[0].id.toString()}
         onEndReached={() => {
           setIsFooterRefreshing(true);
           setPage(page + 1);

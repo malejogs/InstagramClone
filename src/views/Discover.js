@@ -150,7 +150,7 @@ const Discover = () => {
           //   setNewMedia(data);
           setIsRefreshing(false);
         }}
-        keyExtractor={(item, i) => `${item[0]?.id}-${page}-${i}`}
+        keyExtractor={(item, i) => `${item[0]?.id}-${i}`}
         onEndReached={() => {
           setIsFooterRefreshing(true);
           setPage(page + 1);
