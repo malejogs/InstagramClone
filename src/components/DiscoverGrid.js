@@ -20,7 +20,7 @@ const BigColumn = ({image}) => (
     }}>
     <ImageGrid
       source={{
-        uri: image.webformatURL,
+        uri: image?.webformatURL,
       }}
       style={{
         flex: 2,
@@ -39,7 +39,7 @@ const SmallColumn = ({images}) => (
       <ImageGrid
         key={`${image.id}-${i}`}
         source={{
-          uri: image.webformatURL,
+          uri: image?.webformatURL,
         }}
         style={{
           flex: 1,
@@ -72,12 +72,12 @@ export const Row3 = ({images}) => (
 );
 
 const gridConfig = [
-  (images, i) => <Row1 key={`${images[0].id}-${i}`} images={images} />,
-  (images, i) => <Row2 key={`${images[0].id}-${i}`} images={images} />,
-  (images, i) => <Row2 key={`${images[0].id}-${i}`} images={images} />,
-  (images, i) => <Row3 key={`${images[0].id}-${i}`} images={images} />,
-  (images, i) => <Row2 key={`${images[0].id}-${i}`} images={images} />,
-  (images, i) => <Row2 key={`${images[0].id}-${i}`} images={images} />,
+  (images, i) => <Row1 key={i} images={images} />,
+  (images, i) => <Row2 key={i} images={images} />,
+  (images, i) => <Row2 key={i} images={images} />,
+  (images, i) => <Row3 key={i} images={images} />,
+  (images, i) => <Row2 key={i} images={images} />,
+  (images, i) => <Row2 key={i} images={images} />,
 ];
 
 export const Grid = ({images, i}) => <>{gridConfig[i % 6](images, i)}</>;

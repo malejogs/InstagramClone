@@ -94,7 +94,7 @@ const Discover = () => {
   let dataDate = 'old';
 
   const getMediaPerPage = async page => {
-    const mediaData = await getPhotos(page, 18);
+    const mediaData = await getPhotos(page % 15, 18);
     const media = [];
     for (let i = 0; i < 6; i++) {
       const data = mediaData.splice(0, 3);
